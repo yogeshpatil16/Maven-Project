@@ -39,7 +39,7 @@ stages:
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
     - task: Docker@2
-      displayName: Build and push an image to container registry
+      displayName: Build and push an image to container
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
