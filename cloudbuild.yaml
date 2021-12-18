@@ -15,7 +15,7 @@ steps:
     args:
       - build
       - '-t'
-      - gcr.io/capgemini-sep/myapp
+      - gcr.io/capgemini-sep/gaganapp
       - .
 images:
-  - gcr.io/capgemini-sep/myapp
+  - gcr.io/capgemini-sep/gaganapp
