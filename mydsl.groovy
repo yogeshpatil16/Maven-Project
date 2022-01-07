@@ -6,8 +6,9 @@ job('my-dsl-job-1') {
     }
     triggers {
         githubPush()
+        cronTrigger(* * * * *)
     }
     steps {
-        maven ('clean test package')
+        maven ('clean package')
     }
 }
