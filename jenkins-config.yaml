@@ -1,0 +1,236 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          description: "gagan git credentials"
+          id: "myGitCredentials"
+          password: "{xxxxx}"
+          scope: GLOBAL
+          username: "gagan"
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    projectMatrix:
+      permissions:
+      - "GROUP:Job/Read:authenticated"
+      - "GROUP:Overall/Read:authenticated"
+      - "USER:Agent/Build:user-level2"
+      - "USER:Job/Build:user-level2"
+      - "USER:Job/Read:user-level2"
+      - "USER:Overall/Administer:gagan"
+      - "USER:Overall/Read:user-level2"
+      - "USER:View/Read:user-level2"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  disabledAdministrativeMonitors:
+  - "jenkins.monitor.JavaVersionRecommendationAdminMonitor"
+  labelAtoms:
+  - name: "built-in"
+  - name: "docker"
+  - name: "jenkins-agent"
+  - name: "linux"
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  nodes:
+  - permanent:
+      labelString: "linux docker"
+      launcher:
+        ssh:
+          credentialsId: "d63ca1b8-9f3f-4e83-a55e-550ff044ac4c"
+          host: "172.31.70.187"
+          port: 22
+          sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
+      name: "jenkins-agent"
+      nodeDescription: "Jenkins server"
+      numExecutors: 2
+      remoteFS: "/var/jenkins"
+      retentionStrategy: "always"
+  numExecutors: 2
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "gagan"
+        name: "Gagandeep"
+        properties:
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - mailer:
+            emailAddress: "admin.gagan@gmail.com"
+        - "apiToken"
+      - id: "user-level1"
+        name: "user level1"
+        properties:
+        - "apiToken"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - mailer:
+            emailAddress: "user1@gmail.com"
+      - id: "user-level2"
+        name: "user-level2 "
+        properties:
+        - "apiToken"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - mailer:
+            emailAddress: "user@gmail.com"
+      - id: "user1"
+        name: "User1"
+        properties:
+        - "apiToken"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - mailer:
+            emailAddress: "user1@gmail.com"
+  slaveAgentPort: -1
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      name: "all"
+  - list:
+      columns:
+      - "status"
+      - "weather"
+      - "jobName"
+      - "lastSuccess"
+      - "lastFailure"
+      - "lastDuration"
+      - "buildButton"
+      - "gitBranchSpecifierColumn"
+      - "descriptionColumn"
+      jobNames:
+      - "p1"
+      name: "first-view-list"
+  viewsTabBar: "standard"
+globalCredentialsConfiguration:
+  configuration:
+    providerFilter:
+      includes:
+        classNames:
+        - "io.jenkins.plugins.credentials.secretsmanager.AwsCredentialsProvider"
+        - "com.cloudbees.hudson.plugins.folder.properties.FolderCredentialsProvider"
+        - "com.cloudbees.plugins.credentials.SystemCredentialsProvider$ProviderImpl"
+        - "com.cloudbees.plugins.credentials.UserCredentialsProvider"
+    typeFilter: "none"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: true
+  sSHD:
+    port: -1
+unclassified:
+  awsCredentialsProvider:
+    cache: true
+    listSecrets:
+      filters:
+      - key: "name"
+        values:
+        - "io.jenkins.plugins.credentials.secretsmanager.config.Value@3644b1"
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  buildStepOperation:
+    enabled: false
+  email-ext:
+    adminRequiredForTemplateTesting: false
+    allowUnregisteredEnabled: false
+    charset: "UTF-8"
+    debugMode: false
+    defaultBody: |-
+      $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+      Check console output at $BUILD_URL to view the results.
+    defaultContentType: "text/plain"
+    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
+    defaultTriggerIds:
+    - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+    maxAttachmentSize: -1
+    maxAttachmentSizeMb: -1
+    precedenceBulk: false
+    watchingEnabled: false
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleForNormalize
+  gitHubPluginConfig:
+    hookUrl: "http://54.90.13.177:8080/github-webhook/"
+  gitSCM:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "address not configured yet <nobody@nowhere>"
+    url: "http://54.90.13.177:8080/"
+  lockableResourcesManager:
+    declaredResources:
+    - labels: "test"
+      name: "lock-r1"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  pollSCM:
+    pollingThreadCount: 10
+  timestamper:
+    allPipelines: false
+    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
+    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+      properties:
+      - installSource:
+          installers:
+          - command:
+              command: "yum install -y git"
+              label: "giti"
+              toolHome: "/var/jenkins/tools"
+  maven:
+    installations:
+    - name: "mvn1"
+      properties:
+      - installSource:
+          installers:
+          - maven:
+              id: "3.8.4"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
