@@ -17,6 +17,7 @@ spec:
       containers:
       - name: my-container
         image: gagandeepthinknyx/dell-app1
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---
