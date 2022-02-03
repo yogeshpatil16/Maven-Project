@@ -17,6 +17,7 @@ mvn clean
 mvn package
 
 
+
 check the outputs in target directory structure and war file with name devops.war
 
 build the docker image with docker build command ( you can see dockerfile in present working directory)
