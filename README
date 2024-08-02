@@ -11,7 +11,7 @@ docker // you can install docker with "yum install -y docker-ce docker-ce-cli co
 post installing you can fecth the code from github account by clone the repo https://github.com/techlanders/Maven-Project.git
 git clone https://github.com/techlanders/Maven-Project.githttps://github.com/yogeshpatil16/Maven-Project/blob/master/README
 
-use maven to clean the previous builds and  package the war file 
+use maven11 to clean the previous builds and  package the war file 
 mvn clean
 mvn package
 
